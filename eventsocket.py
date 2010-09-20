@@ -227,6 +227,9 @@ class EventProtocol(EventSocket):
             logLevel=log.logging.DEBUG)
 
     # EVENT SOCKET COMMANDS
+    def execute(self, name, args, lock=False):
+        return self.__protocolSendmsg(name, args, lock=lock)
+
     def api(self, args):
         "Please refer to http://wiki.freeswitch.org/wiki/Event_Socket#api"
         return self.__protocolSend("api", args)
